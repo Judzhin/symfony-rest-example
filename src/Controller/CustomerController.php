@@ -8,6 +8,7 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\ReadModel\CustomerFetcher;
+use App\Repository\CustomerRepository;
 use App\UseCase\Customer\Create;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -63,7 +64,28 @@ class CustomerController extends AbstractController
                 'data' => [$customer]
             ]);
         } catch (\Throwable $exception) {
-            dd($exception->getMessage());
+            return $this->respondWithErrors($exception->getMessage());
         }
+    }
+
+    /**
+     * @param Request $request
+     * @param CustomerRepository $repository
+     * @param $id
+     *
+     * @return JsonResponse
+     */
+    #[Route("/customers/{id}", name: 'customers_get', methods: ["GET"])]
+    public function getCustomer(Request $request, CustomerRepository $repository , $id): JsonResponse
+    {
+        /** @var Customer $customer */
+        if ($customer = $repository->find($id)) {
+            return $this->createResponse([
+                'success' => true,
+                'data' => [$customer]
+            ]);
+        }
+
+        return $this->respondNotFound("Customer not found");
     }
 }
