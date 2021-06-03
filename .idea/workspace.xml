@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eea42bd3-2a7f-481e-9708-0eeecaf9138a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/demo_rest_api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/demo_rest_api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CustomerController.php" afterDir="false" />
     </list>
@@ -289,7 +287,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="To Ignore Idea" />
     <MESSAGE value="Customer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Customer" />
+    <MESSAGE value="Customer Get" />
+    <option name="LAST_COMMIT_MESSAGE" value="Customer Get" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config/packages/doctrine_migrations.yaml">

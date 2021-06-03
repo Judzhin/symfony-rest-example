@@ -88,4 +88,25 @@ class CustomerController extends AbstractController
 
         return $this->respondNotFound("Customer not found");
     }
+
+    /**
+     * @param Request $request
+     * @param CustomerRepository $repository
+     * @param $id
+     *
+     * @return JsonResponse
+     */
+    #[Route("/customers/{id}", name: 'customers_get', methods: ["PUT"])]
+    public function updateCustomer(Request $request, CustomerRepository $repository , $id): JsonResponse
+    {
+        /** @var Customer $customer */
+        if ($customer = $repository->find($id)) {
+            return $this->createResponse([
+                'success' => true,
+                'data' => [$customer]
+            ]);
+        }
+
+        return $this->respondNotFound("Customer not found");
+    }
 }
