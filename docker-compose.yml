@@ -1,0 +1,65 @@
+version: '3.5'
+
+services:
+
+  php-fpm:
+    container_name: symfony-rest-example-php-fpm-${APP_ENV:-dev}
+    build:
+      context: .
+      target: ${APP_ENV:-dev}
+      dockerfile: .docker/php-fpm/Dockerfile
+      args:
+        APP_ENV: ${APP_ENV:-dev}
+    volumes:
+    - ./:/var/www/html:rw
+    - ~/.composer:/root/.composer/cache
+
+  nginx:
+    container_name: symfony-rest-example-nginx-${APP_ENV:-dev}
+    build:
+      context: .
+      target: ${APP_ENV:-dev}
+      dockerfile: .docker/nginx/Dockerfile
+      args:
+        APP_ENV: ${APP_ENV:-dev}
+    volumes:
+    - ./:/var/www/html:rw
+    - ./var/log/nginx:/var/log/nginx:rw
+    ports:
+    - ${NGINX_PORT:-8888}:80
+    depends_on:
+    - php-fpm
+
+  mariadb:
+    container_name: symfony-rest-example-mariadb-${APP_ENV:-dev}
+    build:
+      context: .
+      target: ${APP_ENV:-dev}
+      dockerfile: .docker/mariadb/Dockerfile
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-demo.dev}
+      MYSQL_USER: ${MYSQL_USER:-root}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-root}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+    ports:
+    - ${MYSQL_PORT:-3306}:3306
+    volumes:
+    - symfony-rest-example-data:/var/lib/mysql
+
+  pma:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: symfony-rest-example-pma-${APP_ENV:-dev}
+    ports:
+    - ${PMA_PORT:-33060}:80
+    environment:
+      PMA_HOST: ${PMA_HOST:-mariadb}
+
+  mailer:
+    image: mailhog/mailhog
+    container_name: symfony-rest-example-mailer-${APP_ENV:-dev}
+    ports:
+    - ${MAILHOG_PORT:-8025}:8025
+
+volumes:
+  symfony-rest-example-redis:
+  symfony-rest-example-data:
