@@ -5,7 +5,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Customer;
 use App\ReadModel\CustomerFetcher;
 use App\Repository\CustomerRepository;
@@ -46,7 +45,7 @@ class CustomerController extends AbstractController
      *
      * @return JsonResponse
      */
-    #[Route("/customers", name: 'customers_add', methods: ["POST"])]
+    #[Route('/customers', name: 'customers_add', methods: ["POST"])]
     public function addCustomer(Request $request, Create\Handler $handler): JsonResponse
     {
         $request = $this->transformJsonBody($request);
@@ -69,14 +68,13 @@ class CustomerController extends AbstractController
     }
 
     /**
-     * @param Request $request
      * @param CustomerRepository $repository
      * @param $id
      *
      * @return JsonResponse
      */
-    #[Route("/customers/{id}", name: 'customers_get', methods: ["GET"])]
-    public function getCustomer(Request $request, CustomerRepository $repository , $id): JsonResponse
+    #[Route('/customers/{id}', name: 'customers_get', methods: ["GET"])]
+    public function getCustomer(CustomerRepository $repository , $id): JsonResponse
     {
         /** @var Customer $customer */
         if ($customer = $repository->find($id)) {
@@ -96,7 +94,7 @@ class CustomerController extends AbstractController
      *
      * @return JsonResponse
      */
-    #[Route("/customers/{id}", name: 'customers_get', methods: ["PUT"])]
+    #[Route('/customers/{id}', name: 'customers_get', methods: ["PUT"])]
     public function updateCustomer(Request $request, CustomerRepository $repository , $id): JsonResponse
     {
         /** @var Customer $customer */
