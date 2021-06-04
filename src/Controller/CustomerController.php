@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @package App\Controller
  *
- * @Route("/api", name="customer_api")
+ * @Route('/api', name='customer_api')
  */
 class CustomerController extends AbstractController
 {
@@ -29,7 +29,7 @@ class CustomerController extends AbstractController
      * @param CustomerFetcher $fetcher
      * @return JsonResponse
      */
-    #[Route("/customers", name: 'customers', methods: ["GET"])]
+    #[Route('/customers', name: 'customers', methods: ['GET'])]
     public function getCustomers(CustomerFetcher $fetcher): JsonResponse
     {
         return $this->createResponse([
@@ -45,7 +45,7 @@ class CustomerController extends AbstractController
      *
      * @return JsonResponse
      */
-    #[Route('/customers', name: 'customers_add', methods: ["POST"])]
+    #[Route('/customers', name: 'customers_add', methods: ['POST'])]
     public function addCustomer(Request $request, Create\Handler $handler): JsonResponse
     {
         $request = $this->transformJsonBody($request);
@@ -73,7 +73,7 @@ class CustomerController extends AbstractController
      *
      * @return JsonResponse
      */
-    #[Route('/customers/{id}', name: 'customers_get', methods: ["GET"])]
+    #[Route('/customers/{id}', name: 'customers_get', methods: ['GET'])]
     public function getCustomer(CustomerRepository $repository , $id): JsonResponse
     {
         /** @var Customer $customer */
@@ -84,7 +84,7 @@ class CustomerController extends AbstractController
             ]);
         }
 
-        return $this->respondNotFound("Customer not found");
+        return $this->respondNotFound('Customer not found');
     }
 
     /**
@@ -94,7 +94,7 @@ class CustomerController extends AbstractController
      *
      * @return JsonResponse
      */
-    #[Route('/customers/{id}', name: 'customers_get', methods: ["PUT"])]
+    #[Route('/customers/{id}', name: 'customers_get', methods: ['PUT'])]
     public function updateCustomer(Request $request, CustomerRepository $repository , $id): JsonResponse
     {
         /** @var Customer $customer */
@@ -105,6 +105,6 @@ class CustomerController extends AbstractController
             ]);
         }
 
-        return $this->respondNotFound("Customer not found");
+        return $this->respondNotFound('Customer not found');
     }
 }
