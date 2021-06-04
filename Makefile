@@ -104,6 +104,10 @@ migrate: ## Load migration
 	$(info Make: Load fixtures)
 	@docker-compose exec php-fpm bash -c "bin/console doctrine:migrations:migrate"
 
+pre-phpunit: ## Run phpunit tests
+	$(info Make: Run phpunit tests)
+	@docker-compose run --rm php-fpm composer dump-env test
+
 phpunit: ## Run phpunit tests
 	$(info Make: Run phpunit tests)
 	@docker-compose run --rm php-fpm php ./bin/phpunit
