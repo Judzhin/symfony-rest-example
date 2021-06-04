@@ -89,20 +89,23 @@ class CustomerController extends AbstractController
     }
 
     /**
-     * @param CustomerRepository $repository
+     * @param CustomerFetcher $fetcher
      * @param $id
      *
      * @return JsonResponse
      */
     #[Route('/customers/{id}', name: 'customers_get', methods: ['GET'])]
-    public function getCustomer(CustomerRepository $repository , $id): JsonResponse
+    public function getCustomer(CustomerFetcher $fetcher , $id): JsonResponse
     {
-        /** @var Customer $customer */
-        if ($customer = $repository->find($id)) {
+        try {
+            /** @var Customer $customer */
+            $customer = $fetcher->find($id);
             return $this->respondCustomer($customer);
+        } catch (EntityNotFoundException $exception) {
+            $this->logger->alert($message = $exception->getMessage());
+            return $this->respondNotFound($message);
         }
 
-        return $this->respondNotFound('Customer not found');
     }
 
     /**
@@ -128,17 +131,11 @@ class CustomerController extends AbstractController
             $customer = $handler->handle($command);
             return $this->respondCustomer($customer);
         } catch (EntityNotFoundException $exception) {
-            return $this->respondNotFound($exception->getMessage());
+            $this->logger->alert($message = $exception->getMessage());
+            return $this->respondNotFound($message);
         } catch (\Throwable $exception) {
 
         }
-
-        ///** @var Customer $customer */
-        //if ($customer = $repository->find($id)) {
-        //
-        //}
-
-        // return $this->respondNotFound('Customer not found');
     }
 
     /**

@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eea42bd3-2a7f-481e-9708-0eeecaf9138a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Exception/EntityNotFoundException.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UseCase/Customer/Update/Command.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/UseCase/Customer/Update/Command.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UseCase/Customer/Update/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/UseCase/Customer/Update/Handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReadModel/CustomerFetcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReadModel/CustomerFetcher.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +234,7 @@
       <updated>1578001965879</updated>
       <workItem from="1578001968862" duration="8000000" />
       <workItem from="1578089009678" duration="11143000" />
-      <workItem from="1622632880637" duration="23936000" />
+      <workItem from="1622632880637" duration="24415000" />
     </task>
     <task id="LOCAL-00001" summary="To Ignore Idea">
       <created>1622632996033</created>
@@ -280,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622796458679</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update">
+      <created>1622797646862</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1622797646862</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -321,7 +326,8 @@
     <MESSAGE value="Customer Get" />
     <MESSAGE value="Customer Put" />
     <MESSAGE value="Customer Logger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Customer Logger" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config/packages/doctrine_migrations.yaml">

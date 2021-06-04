@@ -4,6 +4,8 @@
 namespace App\ReadModel;
 
 
+use App\Entity\Customer;
+use App\Exception\EntityNotFoundException;
 use App\Repository\CustomerRepository;
 
 class CustomerFetcher
@@ -17,6 +19,20 @@ class CustomerFetcher
         private CustomerRepository  $repository
     )
     {
+    }
+
+    /**
+     * @param string $id
+     * @return Customer
+     */
+    public function find(string $id): Customer
+    {
+        /** @var Customer $customer */
+        if (!$customer = $this->repository->find($id)) {
+            throw EntityNotFoundException::customerIsNotFound($id);
+        }
+
+        return $customer;
     }
 
     /**
