@@ -10,6 +10,7 @@ use App\Exception\EntityNotFoundException;
 use App\ReadModel\CustomerFetcher;
 use App\Repository\CustomerRepository;
 use App\UseCase\Customer\Create;
+use App\UseCase\Customer\Delete;
 use App\UseCase\Customer\Update;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -84,7 +85,8 @@ class CustomerController extends AbstractController
             $customer = $handler->handle($command);
             return $this->respondCustomer($customer);
         } catch (\Throwable $exception) {
-            return $this->respondWithErrors($exception->getMessage());
+            $this->logger->warning($message = $exception->getMessage());
+            return $this->respondWithErrors($message);
         }
     }
 
@@ -104,8 +106,10 @@ class CustomerController extends AbstractController
         } catch (EntityNotFoundException $exception) {
             $this->logger->alert($message = $exception->getMessage());
             return $this->respondNotFound($message);
+        } catch (\Throwable $exception) {
+            $this->logger->warning($message = $exception->getMessage());
+            return $this->respondWithErrors($message);
         }
-
     }
 
     /**
@@ -134,25 +138,32 @@ class CustomerController extends AbstractController
             $this->logger->alert($message = $exception->getMessage());
             return $this->respondNotFound($message);
         } catch (\Throwable $exception) {
-
+            $this->logger->warning($message = $exception->getMessage());
+            return $this->respondWithErrors($message);
         }
     }
 
     /**
-     * @param Request $request
-     * @param CustomerRepository $repository
+     * @param Delete\Handler $handler
      * @param $id
      *
      * @return JsonResponse
      */
     #[Route('/customers/{id}', name: 'customers_delete', methods: ['DELETE'])]
-    public function deleteCustomer(Request $request, CustomerRepository $repository , $id): JsonResponse
+    public function deleteCustomer(Delete\Handler $handler , $id): JsonResponse
     {
-        /** @var Customer $customer */
-        if ($customer = $repository->find($id)) {
-            return $this->respondCustomer($customer);
-        }
+        /** @var Delete\Command $command */
+        $command = new Delete\Command($id);
 
-        return $this->respondNotFound('Customer not found');
+        try {
+            $handler->handle($command);
+            return $this->respondWithSuccess('Customer deleted successfully');
+        } catch (EntityNotFoundException $exception) {
+            $this->logger->alert($message = $exception->getMessage());
+            return $this->respondNotFound($message);
+        } catch (\Throwable $exception) {
+            $this->logger->warning($message = $exception->getMessage());
+            return $this->respondWithErrors($message);
+        }
     }
 }

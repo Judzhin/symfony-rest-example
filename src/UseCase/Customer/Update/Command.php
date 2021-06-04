@@ -13,22 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Command extends \App\UseCase\Customer\Create\Command
 {
-    ///** @var string */
-    //#[Assert\NotBlank]
-    //public $firstName;
-    //
-    ///** @var string */
-    //#[Assert\NotBlank]
-    //public $lastName;
-    //
-    ///** @var string */
-    //#[Assert\NotBlank]
-    //public $email;
-    //
-    ///** @var string */
-    //#[Assert\NotBlank]
-    //public $phoneNumber;
-
     /**
      * Command constructor.
      *

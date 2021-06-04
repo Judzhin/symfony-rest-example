@@ -1,13 +1,15 @@
 <?php
-
-
 namespace App\ReadModel;
-
 
 use App\Entity\Customer;
 use App\Exception\EntityNotFoundException;
 use App\Repository\CustomerRepository;
 
+/**
+ * Class CustomerFetcher
+ *
+ * @package App\ReadModel
+ */
 class CustomerFetcher
 {
     /**
