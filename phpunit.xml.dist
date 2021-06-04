@@ -15,10 +15,12 @@
 >
     <php>
         <ini name="error_reporting" value="-1"/>
-        <server name="APP_ENV" value="test" force="true"/>
-        <server name="SHELL_VERBOSITY" value="-1"/>
-        <server name="SYMFONY_PHPUNIT_REMOVE" value=""/>
-        <server name="SYMFONY_PHPUNIT_VERSION" value="9.5"/>
+        <env name="APP_ENV" value="test" force="true"/>
+        <env name="KERNEL_CLASS" value="App\Kernel"/>
+        <env name="DATABASE_URL" value="mysql://root:root@mariadb:3306/demo.dev?serverVersion=5.7"/>
+        <env name="SHELL_VERBOSITY" value="-1"/>
+        <env name="SYMFONY_PHPUNIT_REMOVE" value=""/>
+        <env name="SYMFONY_PHPUNIT_VERSION" value="9.5"/>
     </php>
 
     <testsuites>

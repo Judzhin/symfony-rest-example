@@ -16,6 +16,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -58,7 +59,7 @@ class CustomerController extends AbstractController
      */
     private function respondCustomer(Customer $customer): JsonResponse
     {
-        return $this->respondCreated([
+        return $this->createResponse([
             'success' => true,
             'data' => [$customer]
         ]);
@@ -83,7 +84,9 @@ class CustomerController extends AbstractController
             $command->email = $request->get('email');
             $command->phoneNumber = $request->get('phoneNumber');
             $customer = $handler->handle($command);
-            return $this->respondCustomer($customer);
+            return $this
+                ->setStatusCode(Response::HTTP_CREATED)
+                ->respondCustomer($customer);
         } catch (\Throwable $exception) {
             $this->logger->warning($message = $exception->getMessage());
             return $this->respondWithErrors($message);

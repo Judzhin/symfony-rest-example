@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eea42bd3-2a7f-481e-9708-0eeecaf9138a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/packages/test/framework.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CustomerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Functional/Api/CustomerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Functional/Api/CustomerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/Entity/CustomerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Entity/CustomerTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +203,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/config/packages/test" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -209,11 +213,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config/packages/test" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/tests" />
       <recent name="$PROJECT_DIR$/tests/Functional" />
       <recent name="$PROJECT_DIR$/src/UseCase/Customer" />
-      <recent name="$PROJECT_DIR$/src/Repository" />
-      <recent name="$PROJECT_DIR$/src/Entity" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -234,7 +238,7 @@
       <updated>1578001965879</updated>
       <workItem from="1578001968862" duration="8000000" />
       <workItem from="1578089009678" duration="11143000" />
-      <workItem from="1622632880637" duration="29706000" />
+      <workItem from="1622632880637" duration="34236000" />
     </task>
     <task id="LOCAL-00001" summary="To Ignore Idea">
       <created>1622632996033</created>
@@ -334,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622805656847</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Unit Test">
+      <created>1622805844899</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1622805844899</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
