@@ -5,6 +5,7 @@ namespace App\UseCase\Customer\Update;
 
 use App\Entity\Customer;
 use App\Entity\Post;
+use App\Exception\EntityNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -21,7 +22,9 @@ class Handler
      */
     public function __construct(
         private EntityManagerInterface $entityManager
-    ) {}
+    )
+    {
+    }
 
     /**
      * @param Command $command
@@ -30,9 +33,17 @@ class Handler
      */
     public function handle(Command $command): Customer
     {
+        /** @var Customer $customer */
+        if (!$customer = $this->entityManager->find(Customer::class, $command->id)) {
+            throw EntityNotFoundException::customerIsNotFound($command->id);
+        }
 
+        $customer
+            ->setFirstName($command->firstName)
+            ->setLastName($command->lastName)
+            ->setEmail($command->email)
+            ->setPhoneNumber($command->phoneNumber);
 
-        $this->entityManager->persist($customer);
         $this->entityManager->flush();
 
         return $customer;

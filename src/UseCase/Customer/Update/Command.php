@@ -31,11 +31,12 @@ class Command extends \App\UseCase\Customer\Create\Command
 
     /**
      * Command constructor.
-     * @param int $id
+     *
+     * @param string $id
      */
     public function __construct(
         #[Assert\NotBlank]
-        public int $id
+        public string $id
     )
     {}
 

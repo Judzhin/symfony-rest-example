@@ -6,6 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Customer;
+use App\Exception\EntityNotFoundException;
 use App\ReadModel\CustomerFetcher;
 use App\Repository\CustomerRepository;
 use App\UseCase\Customer\Create;
@@ -105,25 +106,32 @@ class CustomerController extends AbstractController
     }
 
     /**
-     * @param Customer $customer
      * @param Request $request
+     * @param string $id
      * @param Update\Handler $handler
      *
      * @return JsonResponse
      */
     #[Route('/customers/{id}', name: 'customers_put', methods: ['PUT'])]
-    public function updateCustomer(Customer $customer, Request $request, Update\Handler $handler): JsonResponse
+    public function updateCustomer(Request $request, string $id, Update\Handler $handler): JsonResponse
     {
+        $request = $this->transformJsonBody($request);
+
         /** @var Update\Command $command */
-        $command = Update\Command::parse($customer);
+        $command = new Update\Command($id);
         $command->firstName = $request->get('firstName');
         $command->lastName = $request->get('lastName');
         $command->email = $request->get('email');
         $command->phoneNumber = $request->get('phoneNumber');
 
-        $handler->handle($command);
+        try {
+            $customer = $handler->handle($command);
+            return $this->respondCustomer($customer);
+        } catch (EntityNotFoundException $exception) {
+            return $this->respondNotFound($exception->getMessage());
+        } catch (\Throwable $exception) {
 
-        return $this->respondCustomer($customer);
+        }
 
         ///** @var Customer $customer */
         //if ($customer = $repository->find($id)) {
