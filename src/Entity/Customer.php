@@ -52,6 +52,13 @@ class Customer implements \JsonSerializable
     private $phoneNumber;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", name="created_at")
+     */
+    private $createdAt;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -142,6 +149,33 @@ class Customer implements \JsonSerializable
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     * @return $this
+     */
+    public function setCreatedAt(\DateTime $createdAt): Customer
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    /**
+     * @throws \Exception
+     * @ORM\PrePersist()
+     */
+    public function beforeSave(): void
+    {
+        $this->setCreatedAt(new \DateTime('now', new \DateTimeZone('Europe/Kiev')));
+    }
+
+    /**
      * Specify data which should be serialized to JSON
      * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
      * @return mixed data which can be serialized by <b>json_encode</b>,
@@ -155,7 +189,8 @@ class Customer implements \JsonSerializable
             'firstName' => $this->getFirstName(),
             'lastName' => $this->getLastName(),
             'email' => $this->getEmail(),
-            'phoneNumber' => $this->getPhoneNumber()
+            'phoneNumber' => $this->getPhoneNumber(),
+            'createdAt' => $this->getCreatedAt()
         ];
     }
 }
