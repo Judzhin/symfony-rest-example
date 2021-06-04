@@ -29,6 +29,7 @@ class AppFixtures extends Fixture
             $customer->setLastName($faker->lastName());
             $customer->setEmail($faker->email());
             $customer->setPhoneNumber($faker->phoneNumber());
+            $customer->setCreatedAt(new \DateTime);
             $manager->persist($customer);
         }
 

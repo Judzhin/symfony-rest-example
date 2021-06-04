@@ -103,3 +103,15 @@ migration: ## Create migration
 migrate: ## Load migration
 	$(info Make: Load fixtures)
 	@docker-compose exec php-fpm bash -c "bin/console doctrine:migrations:migrate"
+
+phpunit: ## Run phpunit tests
+	$(info Make: Run phpunit tests)
+	@docker-compose run --rm php-fpm php ./bin/phpunit
+
+functional: ## Run functional tests
+	$(info Make: Run functional tests)
+	@docker-compose run --rm php-fpm php ./bin/phpunit --testsuite=Functional
+
+unit: ## Run unit tests
+	$(info Make: Run unit tests)
+	@docker-compose run --rm php-fpm php ./bin/phpunit --testsuite=Unit

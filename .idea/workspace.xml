@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eea42bd3-2a7f-481e-9708-0eeecaf9138a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/Builder/CustomerBuilder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Functional/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/Entity/CustomerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/data/.gitkeep" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PostController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +205,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/UseCase/Customer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -209,11 +215,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/tests/Functional" />
       <recent name="$PROJECT_DIR$/src/UseCase/Customer" />
       <recent name="$PROJECT_DIR$/src/Repository" />
       <recent name="$PROJECT_DIR$/src/Entity" />
-      <recent name="$PROJECT_DIR$/src/Controller" />
-      <recent name="$PROJECT_DIR$/src/UseCase/Post/Update" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -234,7 +240,7 @@
       <updated>1578001965879</updated>
       <workItem from="1578001968862" duration="8000000" />
       <workItem from="1578089009678" duration="11143000" />
-      <workItem from="1622632880637" duration="25746000" />
+      <workItem from="1622632880637" duration="28607000" />
     </task>
     <task id="LOCAL-00001" summary="To Ignore Idea">
       <created>1622632996033</created>
@@ -299,7 +305,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622799287039</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Delete">
+      <created>1622799411862</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1622799411862</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Remove Not Needed Class">
+      <created>1622799484041</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1622799484041</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add Test package">
+      <created>1622799588419</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1622799588419</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -342,7 +369,9 @@
     <MESSAGE value="Customer Logger" />
     <MESSAGE value="Update" />
     <MESSAGE value="Delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete" />
+    <MESSAGE value="Remove Not Needed Class" />
+    <MESSAGE value="Add Test package" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Test package" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config/packages/doctrine_migrations.yaml">
